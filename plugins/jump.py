@@ -7,7 +7,7 @@ import datetime
 
 
 class PluginCSVCollect(plugintypes.IPluginExtended):
-		def __init__(self, file_name="collect.csv", delim = ",", verbose=False):
+		def __init__(self):
 			now = datetime.datetime.now()
 '''			self.time_stamp = '%d-%d-%d_%d-%d-%d'%(now.year,now.month,now.day,now.hour,now.minute,now.second)
 			self.file_name = self.time_stamp
