@@ -8,8 +8,8 @@ import datetime
 
 class PluginCSVCollect(plugintypes.IPluginExtended):
 		def __init__(self):
-			now = datetime.datetime.now()
-'''			self.time_stamp = '%d-%d-%d_%d-%d-%d'%(now.year,now.month,now.day,now.hour,now.minute,now.second)
+'''			now = datetime.datetime.now()
+			self.time_stamp = '%d-%d-%d_%d-%d-%d'%(now.year,now.month,now.day,now.hour,now.minute,now.second)
 			self.file_name = self.time_stamp
 			self.start_time = timeit.default_timer()
 '''
@@ -42,6 +42,9 @@ class PluginCSVCollect(plugintypes.IPluginExtended):
 		dec = clf.decision_function(sample)'''
 
 '''here there is probably a mistake'''
-		if (now.second % 20)==0:
-			with uinput.Device([uinput.KEY_SPACE]) as device:
-	    		device.emit_click(uinput.KEY_SPACE)
+		for i in range (0,900000000):
+			if i%10000000:
+				with uinput.Device([uinput.KEY_SPACE]) as device:
+					device.emit_click(uinput.KEY_SPACE)
+			
+	    		
