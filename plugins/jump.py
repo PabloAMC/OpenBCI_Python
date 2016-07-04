@@ -9,10 +9,10 @@ import datetime
 class PluginCSVCollect(plugintypes.IPluginExtended):
 		def __init__(self, file_name="collect.csv", delim = ",", verbose=False):
 			now = datetime.datetime.now()
-			self.time_stamp = '%d-%d-%d_%d-%d-%d'%(now.year,now.month,now.day,now.hour,now.minute,now.second)
+'''			self.time_stamp = '%d-%d-%d_%d-%d-%d'%(now.year,now.month,now.day,now.hour,now.minute,now.second)
 			self.file_name = self.time_stamp
 			self.start_time = timeit.default_timer()
-
+'''
 '''
 	def __init__(self, verbose=False):
     source: http://scikit-learn.org/stable/auto_examples/svm/plot_rbf_parameters.html#example-svm-plot-rbf-parameters-py
@@ -25,11 +25,11 @@ class PluginCSVCollect(plugintypes.IPluginExtended):
 	def activate(self):
 	  
 		print "Activated"
-		rbf_svc = svm.SVC(kernel='rbf')
+'''		rbf_svc = svm.SVC(kernel='rbf')
 		clf = svm.SVC(C=0.5,gamma=1)
 		clf.fit(arrayX, arrayY)
 		# arrayX and arrayY are to be recorded
-
+'''
 		
 	def deactivate(self):
 		print "Deactivated"
