@@ -1,14 +1,14 @@
 import plugin_interface as plugintypes
 import numpy as np
-from sklearn import svm
+#from sklearn import svm
 import uinput
-import timeit
-import datetime
+#import timeit
+#import datetime
 
 
 class PluginCSVCollect(plugintypes.IPluginExtended):
 		def __init__(self):
-'''			now = datetime.datetime.now()
+			'''			now = datetime.datetime.now()
 			self.time_stamp = '%d-%d-%d_%d-%d-%d'%(now.year,now.month,now.day,now.hour,now.minute,now.second)
 			self.file_name = self.time_stamp
 			self.start_time = timeit.default_timer()
