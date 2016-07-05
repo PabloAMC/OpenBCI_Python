@@ -9,10 +9,9 @@ import datetime
 class PluginCSVCollect(plugintypes.IPluginExtended):
 
 	def __init__(self):
-		events = (uinput.KEY_SPACE)
-		device = uinput.Device(events)
-		time.sleep(1)
-
+		rbf_svc = svm.SVC(kernel='rbf')
+		clf = svm.SVC(C=0.5,gamma=1)
+		clf.fit(arrayX, arrayY)
 	
 	
 	
@@ -27,12 +26,12 @@ class PluginCSVCollect(plugintypes.IPluginExtended):
 	def activate(self):
 	  
 		print "Activated"
-		'''		rbf_svc = svm.SVC(kernel='rbf')
-		clf = svm.SVC(C=0.5,gamma=1)
-		clf.fit(arrayX, arrayY)
+
+		events = (uinput.KEY_SPACE)
+		device = uinput.Device(events)
+		time.sleep(1)
 		# arrayX and arrayY are to be recorded
-		'''
-		
+
 	def deactivate(self):
 		print "Deactivated"
 
