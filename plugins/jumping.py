@@ -1,13 +1,7 @@
 import uinput
 import time
 def main():
-    events = (
-        uinput.KEY_E,
-        uinput.KEY_H,
-        uinput.KEY_L,
-	      uinput.KEY_SPACE,
-        uinput.KEY_O,
-        )
+    events = (uinput.KEY_SPACE)
     
     device = uinput.Device(events)
     time.sleep(1) # This is required here only for demonstration
