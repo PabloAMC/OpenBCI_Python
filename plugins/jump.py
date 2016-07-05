@@ -1,9 +1,9 @@
 import plugin_interface as plugintypes
 import numpy as np
-#from sklearn import svm
+from sklearn import svm
 import uinput
-#import timeit
-#import datetime
+import timeit
+import datetime
 
 
 class PluginCSVCollect(plugintypes.IPluginExtended):
