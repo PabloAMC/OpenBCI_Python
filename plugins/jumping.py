@@ -1,9 +1,7 @@
 import uinput
 import time
 def main():
-    events = (uinput.KEY_SPACE)
-    
-    device = uinput.Device(events)
+    device.emit(uinput.KEY_SPACE)
     time.sleep(1) # This is required here only for demonstration
                       # purposes. Without this, the underlying machinery might
                       # not have time to assign a proper handler for our device
