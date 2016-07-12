@@ -3,6 +3,7 @@ import csv
 import timeit
 import datetime
 import plugin_interface as plugintypes
+import random
 
 
 class PluginPrint(plugintypes.IPluginExtended):
@@ -27,7 +28,7 @@ class PluginPrint(plugintypes.IPluginExtended):
         print "Will export CSV to:", self.file_name
         # Open in append mode
         with open(self.file_name, 'a') as f:
-            f.write('%' + self.time_stamp + '\n')
+            #f.write('%' + self.time_stamp + '\n')
 
     def deactivate(self):
         print "Closing, CSV saved to:", self.file_name
@@ -38,13 +39,19 @@ class PluginPrint(plugintypes.IPluginExtended):
 
     # called with each new sample
     def __call__(self, sample):
+        t = timeit.default_timer() - self.start_time
+        row = ''
+        row += str(t)
+        row += self.delim
+        row += str(sample.channel_data[1])
+        row += self.delim
         ran=random.random()
-        if sample.id == 0 and ran < 1./3.:
-            os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (0.5, 440))
-        if sample.id > 3 and sample.id < 53 and ran < 1./3.:
-            row = ''
-            row += str(t)
-            row += self.delim
-            row += str(sample.channel_data[1])
-            with open(self.file_name, 'a') as f:
-                f.write(row)
+        if sample.id == 0 and ran < 1. / 3.:
+            os.system('play -n synth 0.1 tri  440.0')
+            b=1
+        elif sample.id == 50:
+            b=0
+        row += str(b)
+        row += '\n'
+        with open(self.file_name, 'a') as f:
+            f.write(row)
