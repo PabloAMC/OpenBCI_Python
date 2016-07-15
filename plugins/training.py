@@ -14,6 +14,7 @@ class PluginPrint(plugintypes.IPluginExtended):
         self.start_time = timeit.default_timer()
         self.delim = delim
         self.verbose = verbose
+        self.recorded_ex = 0
 
     def activate(self):
         if len(self.args) > 0:
@@ -24,10 +25,10 @@ class PluginPrint(plugintypes.IPluginExtended):
             if 'verbose' in self.args:
                 self.verbose = True
 
-        self.file_name = self.file_name + 'training sample'+'.csv'
+        self.file_name = self.file_name + 'training_sample'+'.csv'
         print "Will export CSV to:", self.file_name
         # Open in append mode
-        with open(self.file_name, 'a') as f:
+        #with open(self.file_name, 'a') as f:
             #f.write('%' + self.time_stamp + '\n')
 
     def deactivate(self):
@@ -39,18 +40,17 @@ class PluginPrint(plugintypes.IPluginExtended):
 
     # called with each new sample
     def __call__(self, sample):
+        b = 0
         t = timeit.default_timer() - self.start_time
+        if t > (self.recorded_ex +1) * 4:
+            self.recorded_ex = self.recorded_ex +1
+            os.system('play -n synth 0.1 tri  440.0')
+            b = 1
         row = ''
         row += str(t)
         row += self.delim
         row += str(sample.channel_data[1])
         row += self.delim
-        ran=random.random()
-        if sample.id == 0 and ran < 1. / 3.:
-            os.system('play -n synth 0.1 tri  440.0')
-            b=1
-        elif sample.id == 50:
-            b=0
         row += str(b)
         row += '\n'
         with open(self.file_name, 'a') as f:
